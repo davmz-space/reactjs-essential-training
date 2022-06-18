@@ -1,6 +1,6 @@
 import './App.css';
 import amongus from "./amongus.jpg";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useReducer } from "react";
 
 // function Header(props) {
 //   console.log(props);
@@ -77,27 +77,45 @@ function RegularComponent() {
 
 // function App({ authorized }) {
 function App() {  
-  // const what = useState("happy");
-  const [emotion, setEmotion] = useState("happy");
-  // console.log(emotion);
+  const [checked, toggle] = useReducer(
+    (checked) => !checked,  
+    false
+  );
+  // const [checked, setChecked] = useState(false);
 
-  const [secondary, setSecondary] = useState("tired");
+  // function toggle() {
+  //   setChecked(checked => !checked);
+  // }
 
-  useEffect(() => {
-    console.log(`It's ${emotion} around here!`);
-  }, [emotion]);
+  // // const what = useState("happy");
+  // const [emotion, setEmotion] = useState("happy");
+  // // console.log(emotion);
 
-  useEffect(() => {
-    console.log(`It's ${secondary} around here!`);
-  }, [secondary]);
+  // const [secondary, setSecondary] = useState("tired");
+
+  // useEffect(() => {
+  //   console.log(`It's ${emotion} around here!`);
+  // }, [emotion]);
+
+  // useEffect(() => {
+  //   console.log(`It's ${secondary} around here!`);
+  // }, [secondary]);
 
   return (
     <>
-      <h1>Current emotion is {emotion} and {secondary}.</h1>
+      <input
+        type="checkBox"
+        value={checked}
+        onChange={toggle}
+      />
+
+      <p>{checked ? "checked" : "not checked"}</p>
+
+      {/* <h1>Current emotion is {emotion} and {secondary}.</h1>
       <button onClick={ () => setEmotion("Happy") }>Happy</button>
       <button onClick={ () => setEmotion("Crabby") }>Crabby</button>
       <button onClick={ () => setEmotion("Frusturated") }>Frusturated</button>
-      <button onClick={ () => setEmotion("Enthusiastic") }>Enthusiastic</button>
+      <button onClick={ () => setEmotion("Enthusiastic") }>Enthusiastic</button> */}
       
 
       {/* {authorized ? 
