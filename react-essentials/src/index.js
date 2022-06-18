@@ -10,6 +10,21 @@ function AppTwo() {
   )
 }
 
+// const checklist = [
+//   "boots",
+//   "tent",
+//   "headlamp"
+// ];  
+
+const [, , light] = [
+  "boots",
+  "tent",
+  "headlamp"
+];  
+
+console.log(light);
+// console.log(checklist);
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <>

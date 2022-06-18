@@ -74,10 +74,10 @@ function RegularComponent() {
   )
 }
 
-function App(props) {
+function App({authorized}) {
   return (
     <>
-      {props.authorized ? 
+      {authorized ? 
         <SecretComponent /> : 
         <RegularComponent />}
     </>
