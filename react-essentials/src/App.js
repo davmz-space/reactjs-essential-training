@@ -1,4 +1,5 @@
 import './App.css';
+import amongus from "./amongus.jpg";
 
 function Header(props) {
   console.log(props);
@@ -16,6 +17,12 @@ function Main(props) {
     <section>
       <p>We serve the most {props.adjective} food around.</p>
       
+      <img
+        src={ amongus }
+        alt="amongus character game"
+        height={ 200 }
+      />
+
       <ul style={{ textAlign: "left" }}>
         {props.dishes.map((dish) => (
           <li key={dish.id}>
