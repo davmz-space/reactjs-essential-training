@@ -18,7 +18,7 @@ root.render(
   // </>
 
   <React.StrictMode>
-    <App />
+    <App authorized={ false } />
   </React.StrictMode>
 );
 
