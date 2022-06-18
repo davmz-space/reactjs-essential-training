@@ -36,7 +36,7 @@ root.render(
   //   <App authorized={ false } />
   // </React.StrictMode>
 
-  <App />
+  <App login="davmz-space" />
 );
 
 // If you want to start measuring performance in your app, pass a function

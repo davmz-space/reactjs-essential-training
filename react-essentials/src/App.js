@@ -76,11 +76,28 @@ function RegularComponent() {
 }
 
 // function App({ authorized }) {
-function App() {  
-  const [checked, toggle] = useReducer(
-    (checked) => !checked,  
-    false
-  );
+function App({ login }) {  
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    fetch(`https://api.github.com/users/${login}`)
+      .then(response => response.json())
+      .then(setData);
+  }, []);
+
+  if (data) {
+    return <div>{ JSON.stringify(data) }</div>
+  }
+
+  return <div>No User Available</div>
+
+  // https://api.github.com/users/davmz-space
+
+  // const [checked, toggle] = useReducer(
+  //   (checked) => !checked,  
+  //   false
+  // );
+
   // const [checked, setChecked] = useState(false);
 
   // function toggle() {
@@ -101,28 +118,28 @@ function App() {
   //   console.log(`It's ${secondary} around here!`);
   // }, [secondary]);
 
-  return (
-    <>
-      <input
-        type="checkBox"
-        value={checked}
-        onChange={toggle}
-      />
+  // return (
+    // <>
+    //   <input
+    //     type="checkBox"
+    //     value={checked}
+    //     onChange={toggle}
+    //   />
 
-      <p>{checked ? "checked" : "not checked"}</p>
+    //   <p>{checked ? "checked" : "not checked"}</p>
 
-      {/* <h1>Current emotion is {emotion} and {secondary}.</h1>
-      <button onClick={ () => setEmotion("Happy") }>Happy</button>
-      <button onClick={ () => setEmotion("Crabby") }>Crabby</button>
-      <button onClick={ () => setEmotion("Frusturated") }>Frusturated</button>
-      <button onClick={ () => setEmotion("Enthusiastic") }>Enthusiastic</button> */}
+    //   {/* <h1>Current emotion is {emotion} and {secondary}.</h1>
+    //   <button onClick={ () => setEmotion("Happy") }>Happy</button>
+    //   <button onClick={ () => setEmotion("Crabby") }>Crabby</button>
+    //   <button onClick={ () => setEmotion("Frusturated") }>Frusturated</button>
+    //   <button onClick={ () => setEmotion("Enthusiastic") }>Enthusiastic</button> */}
       
 
-      {/* {authorized ? 
-        <SecretComponent /> : 
-        <RegularComponent />} */}
-    </>
-  )
+    //   {/* {authorized ? 
+    //     <SecretComponent /> : 
+    //     <RegularComponent />} */}
+    // </>
+  // )
 
   // if (props.authorized) {
   //   return <SecretComponent />
