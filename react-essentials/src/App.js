@@ -1,6 +1,6 @@
 import './App.css';
 import amongus from "./amongus.jpg";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 // function Header(props) {
 //   console.log(props);
@@ -79,12 +79,23 @@ function RegularComponent() {
 function App() {  
   // const what = useState("happy");
   const [emotion, setEmotion] = useState("happy");
-  console.log(emotion);
+  // console.log(emotion);
+
+  const [secondary, setSecondary] = useState("tired");
+
+  useEffect(() => {
+    console.log(`It's ${emotion} around here!`);
+  }, [emotion]);
+
+  useEffect(() => {
+    console.log(`It's ${secondary} around here!`);
+  }, [secondary]);
 
   return (
     <>
-      <h1>Current emotion is {emotion}.</h1>
+      <h1>Current emotion is {emotion} and {secondary}.</h1>
       <button onClick={ () => setEmotion("Happy") }>Happy</button>
+      <button onClick={ () => setEmotion("Crabby") }>Crabby</button>
       <button onClick={ () => setEmotion("Frusturated") }>Frusturated</button>
       <button onClick={ () => setEmotion("Enthusiastic") }>Enthusiastic</button>
       
