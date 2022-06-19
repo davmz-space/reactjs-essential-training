@@ -1,6 +1,8 @@
 import './App.css';
 import amongus from "./amongus.jpg";
 import { useState, useEffect, useReducer } from "react";
+import { Routes, Route } from "react-router-dom";
+import { Home, About, Events, Contact } from "./pages";
 
 // function Header(props) {
 //   console.log(props);
@@ -76,26 +78,38 @@ function RegularComponent() {
 }
 
 // function App({ authorized }) {
-function App({ login }) {  
-  const [data, setData] = useState(null);
+function App() {  
+  return (
+    <div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/events" element={<Events />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+    </div>
+  )
 
-  useEffect(() => {
-    fetch(`https://api.github.com/users/${login}`)
-      .then(response => response.json())
-      .then(setData);
-  }, []);
+// function App({ login }) {  
+  // const [data, setData] = useState(null);
 
-  if (data) {
-    return (
-      <div>
-        <h1>{ data.name }</h1>        
-        <p>{ data.bio }</p>
-        <img alt={ data.login } src={ data.avatar_url } />
-      </div>
-    )
-  }
+  // useEffect(() => {
+  //   fetch(`https://api.github.com/users/${login}`)
+  //     .then(response => response.json())
+  //     .then(setData);
+  // }, []);
 
-  return <div>No User Available</div>
+  // if (data) {
+  //   return (
+  //     <div>
+  //       <h1>{ data.name }</h1>        
+  //       <p>{ data.bio }</p>
+  //       <img alt={ data.login } src={ data.avatar_url } />
+  //     </div>
+  //   )
+  // }
+
+  // return <div>No User Available</div>
 
   // https://api.github.com/users/davmz-space
 
